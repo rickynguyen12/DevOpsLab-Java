@@ -11,10 +11,16 @@ public class NameChecker {
      * @return True if input is a valid name, else false
      */
     public static boolean check(String input) {
-        if(input.length() >= 2 && input.length() <= 40 && input.matches("[a-zA-Z'-]+") && !input.startsWith("'") && !input.startsWith("-")){
-            return true;
+    if (input.length() >= 2 && input.length() <= 40) {
+        if (!input.startsWith("-") && !input.startsWith("'")) {
+            // Regex pattern to match alphabetic characters, non-consecutive hyphens, or a single quote
+            if (input.matches("^[a-zA-Z]+(?:-[a-zA-Z]+)*(?:'[a-zA-Z]+)?$")) {
+                return true;
+            }
         }
-        return false;
     }
+    return false;
+}
+
     
 }
